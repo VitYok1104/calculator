@@ -5,6 +5,8 @@
  */
 package calculator;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.EventListener;
@@ -21,7 +23,7 @@ public class Calculator extends javax.swing.JFrame {
     
     double num, ans;
     int calculation;
-    
+    char bulbulbul;
     
     
     public Calculator() {
@@ -271,6 +273,12 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
             }
@@ -304,6 +312,7 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jButton2.setText("C");
+        jButton2.setToolTipText("Очистка (Ctrl+Bcsp)");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -320,9 +329,22 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jButton4.setText("+");
+        jButton4.setRequestFocusEnabled(false);
+        jButton4.setRolloverEnabled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton4KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jButton4KeyTyped(evt);
             }
         });
 
@@ -361,6 +383,7 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jButton9.setText("5");
+        jButton9.setToolTipText("");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -369,6 +392,7 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jButton10.setText("6");
+        jButton10.setToolTipText("");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -441,7 +465,6 @@ public class Calculator extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setToolTipText("");
         jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -454,6 +477,7 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton19.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jButton19.setText("^");
+        jButton19.setToolTipText("Піднесення до заданої степені");
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton19ActionPerformed(evt);
@@ -462,6 +486,7 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton20.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jButton20.setText("√");
+        jButton20.setToolTipText("Корінь");
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
@@ -487,6 +512,7 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton23.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jButton23.setText("П");
+        jButton23.setToolTipText("Pi (Shift+P)");
         jButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton23ActionPerformed(evt);
@@ -668,7 +694,7 @@ public class Calculator extends javax.swing.JFrame {
                         .addGap(0, 9, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
                         .addContainerGap(146, Short.MAX_VALUE))))
         );
@@ -848,7 +874,7 @@ public class Calculator extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        jTextField1.setSize(416, 39);
+   //   jTextField1.setSize(416, 39);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
@@ -870,6 +896,7 @@ public class Calculator extends javax.swing.JFrame {
         calculation = 8;
         jLabel1.setText("-" + num);
         jTextField1.setText("");
+        jButton21.setToolTipText("Зміна знаку");
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
@@ -884,9 +911,10 @@ public class Calculator extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jSientificActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSientificActionPerformed
+          jTextField1.setSize(416, 39);
         this.setResizable(true);
         this.setSize(446, 373);
-       jTextField1.setSize(416, 39);
+    
        jLabel1.setSize(416, 23);
 
     }//GEN-LAST:event_jSientificActionPerformed
@@ -894,7 +922,7 @@ public class Calculator extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         this.setResizable(true);
         this.setSize(308, 373);
-
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void jStandartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStandartActionPerformed
@@ -954,41 +982,100 @@ public class Calculator extends javax.swing.JFrame {
         jLabel1.setText("cos" + num);
         jTextField1.setText("");            
     }//GEN-LAST:event_jButton34ActionPerformed
-
+/*
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-//char c = evt.getKeyChar();
-//if(!(Character.isDigit(c)|| (c == KeyEvent.VK_BACK_SPACE)
-//        || (c == KeyEvent.VK_DELETE)))
-//{
-//    getToolkit().beep();
-//    evt.consume();
-//}
+*/
+
+        /* 
     }//GEN-LAST:event_jTextField1KeyTyped
-//   private void jTextField1Key1Typed(java.awt.event.KeyEvent evt) {                                     
-/*char t = evt.getKeyChar();
-if(!(Character.isDigit(t)|| (t == KeyEvent.VK_ENTER)
-        || (t == KeyEvent.VK_ENTER)))
-{
-    getToolkit().beep();
-//    evt.consume();
-}*/
-      private void jTextField1Key1Typed(java.awt.event.KeyEvent evt) {   
-if(evt.getKeyCode() == 12) {
-                                       
-        jTextField1.setText(jTextField1.getText() + "4");
-    }  
-        
-}
+*/
     private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded
-       jLabel1.setSize(416, 23);
+ //      jLabel1.setSize(416, 23);
     }//GEN-LAST:event_jLabel1AncestorAdded
 
-    public static void main(String args[]) {
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+   
+    }//GEN-LAST:event_jButton4KeyPressed
+
+    private void jButton4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyReleased
+
+    }//GEN-LAST:event_jButton4KeyReleased
+
+    private void jButton4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyTyped
+    }//GEN-LAST:event_jButton4KeyTyped
+ 
+private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {   
+    char non =evt.getKeyChar();
+    if(!(Character.isDigit(non) || (non ==KeyEvent.VK_BACK_SPACE)) ||
+            (non == KeyEvent.VK_DELETE)){
+        evt.consume();  
+    }
+    }
+    
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+              char c = evt.getKeyChar();
+               if (c == KeyEvent.VK_ENTER )
+{
+     mathematic();
+jLabel1.setText("");
+} 
+                else if(evt.getKeyCode()== 107){
+                     
+        num = Double.parseDouble(jTextField1.getText());
+        calculation = 1;
+          jLabel1.setText(num + "+");
+          jTextField1.setText("");    
+        }
+                
+                      else  if (c == KeyEvent.VK_MINUS){
+        num = Double.parseDouble(jTextField1.getText());
+        calculation = 2;
+        jLabel1.setText(num + "-");
+        jTextField1.setText("");
+         
+        }
+               else  if(evt.getKeyCode()==106){
+        num = Double.parseDouble(jTextField1.getText());
+        calculation = 3;
+        jLabel1.setText(num + "*");
+        jTextField1.setText("");
+         
+        }
+                     else  if(c == KeyEvent.VK_SLASH){
+        num = Double.parseDouble(jTextField1.getText());
+        calculation = 4;
+         jLabel1.setText(num + "/");
+        jTextField1.setText("");
+         
+        }
+                     else if(c ==KeyEvent.VK_DELETE ){
+                         jTextField1.setText("");
+                         
+                     }
+                  else if(evt.getKeyCode()==80 && (evt.isShiftDown() ) ){
+                      
+                               jTextField1.setText(jTextField1.getText() + Math.PI);
+                         
+                     }
+               else if(evt.getKeyCode()==75 && (evt.isShiftDown() ) ){
+        num = Double.parseDouble(jTextField1.getText());
+        calculation = 7;
+         jLabel1.setText(num + "");
+        jTextField1.setText("");
+                     }
+    }//GEN-LAST:event_jTextField1KeyPressed
+  //  }
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+
+        public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html */
+         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
